@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+
+class AddVideosPage extends StatefulWidget {
+  @override
+  _AddVideosPageState createState() => _AddVideosPageState();
+}
+
+class _AddVideosPageState extends State<AddVideosPage> {
+  // Controller for the video name text field
+  final TextEditingController videoNameController = TextEditingController();
+
+  // Controllers for the time text fields
+  final TextEditingController hoursController = TextEditingController();
+  final TextEditingController minutesController = TextEditingController();
+  final TextEditingController secondsController = TextEditingController();
+
+  bool isBackgroundBlack = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Add Videos'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Text field for video name
+              TextField(
+                controller: videoNameController,
+                decoration: InputDecoration(labelText: 'Video Name'),
+              ),
+              SizedBox(height: 20),
+
+              // Text field for hours
+              TextField(
+                controller: hoursController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Hours'),
+              ),
+              SizedBox(height: 10),
+
+              // Text field for minutes
+              TextField(
+                controller: minutesController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Minutes'),
+              ),
+              SizedBox(height: 10),
+
+              // Text field for seconds
+              TextField(
+                controller: secondsController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Seconds'),
+              ),
+              SizedBox(height: 20),
+
+              // Checkbox to change background color
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Change Background'),
+                  Checkbox(
+                    value: isBackgroundBlack,
+                    onChanged: (value) {
+                      setState(() {
+                        isBackgroundBlack = value!;
+                      });
+                    },
+                  ),
+                ],
+              ),
+
+              // Button to add the video
+              ElevatedButton(
+                onPressed: () {
+                  // Get the values from the text fields
+                  String videoName = videoNameController.text;
+                  String hours = hoursController.text;
+                  String minutes = minutesController.text;
+                  String seconds = secondsController.text;
+
+                  // Send data back to the previous screen
+                  Navigator.pop(
+                    context,
+                    {
+                      'videoName': videoName,
+                      'hours': hours,
+                      'minutes': minutes,
+                      'seconds': seconds,
+                    },
+                  );
+                },
+                child: Text('ADD'),
+              ),
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: isBackgroundBlack ? const Color.fromARGB(255, 232, 91, 91) : Colors.white,
+    );
+  }
+}
