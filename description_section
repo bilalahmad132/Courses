@@ -1,0 +1,91 @@
+// Importing necessary packages from the Flutter framework
+import 'package:flutter/material.dart';
+
+// Widget for displaying the description section of a course
+class DescriptionSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Padding widget to add space at the top
+    return Padding(
+      padding: EdgeInsets.only(top: 20),
+      // Column widget to organize child widgets vertically
+      child: Column(
+        children: [
+          // Text widget displaying the course description
+          Text(
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+            "LoremIpsum has been the industry's standard dummy text ever since the 1500s, "
+            "when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black.withOpacity(0.7),
+            ),
+            textAlign: TextAlign.justify,
+          ),
+          // Spacing
+          SizedBox(height: 20),
+          // Row widget containing information about the course length
+          Row(
+            children: [
+              // Text indicating "Course Length"
+              Text(
+                "Course Length: ",
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              // Timer icon
+              Icon(
+                Icons.timer,
+                color: Color(0xFF674AEF),
+              ),
+              // Spacing
+              SizedBox(width: 5),
+              // Text displaying the course duration
+              Text(
+                "26 Hours",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+          // Spacing
+          SizedBox(height: 10),
+          // Row widget containing information about the course rating
+          Row(
+            children: [
+              // Text indicating "Rating"
+              Text(
+                "Rating:",
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              // Spacing
+              SizedBox(width: 5),
+              // Star icon with amber color
+              Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              // Spacing
+              SizedBox(width: 5),
+              // Text displaying the course rating
+              Text(
+                "4.5",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
